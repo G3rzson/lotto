@@ -1,0 +1,93 @@
+/* CSS RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*--------------------------*/
+body{
+    background-color: darkgray;
+    max-width: 800px;
+    margin: 0 auto;
+}
+/* Menü */
+.menu{
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.menu-select{
+    background-color: darkgray;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 20px;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0 5px black;
+}
+.menu-item{
+    font-size: 1.5rem;
+    background-color: darkgray;
+}
+/* Infó */
+.info-p{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    padding: 0.3rem;
+}
+/* Gomb */
+.gomb{
+    display: block;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: none;
+    border-radius: 25px;
+    background-color: orange;
+    font-size: 1.5rem;
+    font-weight: 800;
+    box-shadow: 0 0 5px black;
+    text-shadow: 0 0 2px rgb(255, 255, 255);
+    cursor: pointer;
+}
+.gomb:hover{
+    box-shadow: 0 0 10px black;
+    text-shadow: 0 0 2px rgb(255, 255, 255);
+    background-color: rgb(255, 186, 0)
+}
+.gomb-container{
+    display: flex;
+    margin: 1rem;
+}
+/* Eredmények */
+.osszegzes{
+    width: 450px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    height: 250px;
+}
+.osszegzes-menu{
+    margin: 1rem;
+    padding: 0.5rem;
+}
+/*------------------------*/
+@media(max-width: 600px) {
+    /* CSS szabályok azokra a képernyőkre, amelyek szélessége 600 pixelnél kisebb */
+    body {
+        background-color: rgb(10, 194, 255);
+        padding: 0;
+        margin: 0;
+    }
+    .gomb-container{
+        display: block;
+        margin: 1rem;
+    }
+    .menu-select{
+        margin: 2rem auto 0;
+    }
+    .gomb{
+        margin: 2rem auto;
+    }
+}
