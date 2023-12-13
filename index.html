@@ -10,7 +10,8 @@
 
     <div class="menu">
         <label for="jatekTípus">Melyik játékot szeretnéd gyakorolni:</label>
-        <select id="jatekTípus" class="menu-select">
+        <select id="jatekTípus" class="menu-select">            
+            <option class="menu-item" value="0">Válassz itt! </option>
             <option class="menu-item" value="90">5-ös lottó</option>
             <option class="menu-item" value="45">6-os lottó</option>
             <option class="menu-item" value="35">7-es lottó</option>
@@ -18,24 +19,35 @@
     </div>
     
     <div class="info">
+        <p class="info-p">A játék kezdéséhez először válaszd ki melyik lottót szeretnéd játszani, aztán nyomj rá a start gombra, majd add meg a számaidat. Ha meg akarod ismételni a játékot, nyomj rá at újra gombra.</p>
         <p class="info-p">Az 5-ös lottóhoz válassz számot 1 és 90 között</p>
         <p class="info-p">A 6-os lottóhoz válassz számot 1 és 45 között</p>
         <p class="info-p">A 7-es lottóhoz válassz számot 1 és 35 között</p>
     </div>
 
     <div class="gomb-container">
-        <button 
-            class="gomb"
+        <button
+            id="start" 
+            class="gomb gomb-start js-gomb-start"
             onclick="jatekInditas()">
                 Játék Indítása
         </button>
         <button 
-            class="gomb"
+            class="gomb gomb-reset"
             onclick="reset()">
                 Újra
-    </button>
+        </button>
     </div>
+
+    <section id="mezok" class="input-numbers"></section>
     
+    <button 
+        id="ellenorzesGomb"
+        class="gomb gomb-eredmeny"
+        onclick="eredmeny()">
+            Eredmény
+    </button>
+
     <div id="eredmenyek" class="osszegzes">
         <!-- Eredmények jelennek meg itt -->
         <p id="vegeredmeny1" class="osszegzes-menu">Gépi számok:</p>

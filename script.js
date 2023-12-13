@@ -1,59 +1,126 @@
+
+
+// ez történjen játék inditáskor
 function jatekInditas() {
-    const e = parseInt(document.getElementById('jatekTípus').value);
+        // melyik játékot választottuk
+    const select = document.getElementById('jatekTípus');
+    const selectedValue = parseInt(select.value);
+        //console.log(selectedValue)
 
-    let lotto = [];
-    for (let szam = 1; szam <= e; szam++) {
-        lotto.push(szam);
-    }
-
-    let keziszamok = [];
+        // érték átalakítása mezők generálásához
     let d;
-    if (e === 35) {
+    if (selectedValue === 35) {
         d = 7;
-    } else if (e === 45) {
+            //console.log('7')
+    } else if (selectedValue === 45) {
         d = 6;
-    } else if (e === 90) {
+            //console.log('6')
+    } else if (selectedValue === 90) {
         d = 5;
+            //console.log('5')
     }
 
-    for (let a = 0; a < d; a++) {
-        const szam = parseInt(prompt(`Add meg a(z) ${a + 1}. számot:`));
-        keziszamok.push(szam);
-    }
+        // az új űrlap létrehozása
+    var form = document.createElement('form');
+    form.id = 'form';
+    form.className = 'form';
 
-    function getRandomNumbers(count, min, max) {
-        if (count > max - min + 1) {
-            console.error("Nem generálható ennyi ismétlés nélküli szám a megadott tartományban.");
-            return [];
+        // űrlap elemek hozzáadása
+    for (let i = 0; i < d; ++i) {
+        var input = document.createElement('input');
+        input.id = `mezo_${ i + 1 }`;
+        input.className = 'input-mezo';
+        input.type = 'text';
+        input.placeholder = `${ i + 1 }. szám:`;
+        form.appendChild(input);
+
+            // Az input mezőkhöz eseménykezelő hozzáadása
+        input.addEventListener('input', function () {
+                // Azonnali ellenőrzés
+            let ertek = parseInt(this.value, 10); // Az input értékének számmá alakítása
+
+            if (isNaN(ertek)) {
+                    // Ha nem számot írtak be, kezeljük le ezt az esetet
+                    //console.log('Hibás szám!');
+                this.style.backgroundColor = 'coral'; 
+            } else {
+                    // Szám esetén ellenőrizzük a feltételt
+                if (ertek > selectedValue) {
+                    this.style.backgroundColor = 'coral';
+                } else if (ertek === 0) {
+                    this.style.backgroundColor = 'coral'; 
+                } else if (ertek > 0 && ertek < selectedValue) {
+                    this.style.backgroundColor = 'lightgreen'; 
+                } 
+            }
+        });
+    }
+        // űrlap hozzáadása a "mezok" id-jú elemhez
+    var mezokContainer = document.getElementById('mezok');
+    mezokContainer.innerHTML = '';  // Törölje a meglévő mezőket
+    mezokContainer.appendChild(form);
+};
+//------------------------------------------------------------------------
+    // eredmény hírdetés
+function eredmeny() {
+
+    // kézi számok
+    function getFormValues() {
+        var form = document.getElementById('form'); // A form ID-jét a sajátodra cseréld
+        var inputs = form.getElementsByClassName('input-mezo');
+        var values = [];
+
+        for (var i = 0; i < inputs.length; i++) {
+            values.push(inputs[i].value);
         }
 
-        const numbers = new Set();
+        return values;
+    }
 
+    // Példa használat
+    var keziszamok = getFormValues();
+
+    let keziszamokint = keziszamok.map(str => parseInt(str, 10));
+
+    // melyik játékot választottuk
+    const select = document.getElementById('jatekTípus');
+    const selectedValue = parseInt(select.value);
+
+    // érték átalakítása mezők generálásához
+    let d;
+    if (selectedValue === 35) {
+        d = 7;
+        //console.log('7')
+    } else if (selectedValue === 45) {
+        d = 6;
+        //console.log('6')
+    } else if (selectedValue === 90) {
+        d = 5;
+        //console.log('5')
+    }
+
+    // random számok generálása
+    function getRandomNumbers(count, min, max) {
+        const numbers = new Set();
         while (numbers.size < count) {
             const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
             numbers.add(randomNum);
         }
-
         return Array.from(numbers);
     }
+    
+    var gepiszamok = getRandomNumbers(d, 1, selectedValue);
 
-    const gepiszamok = getRandomNumbers(d, 1, e);
+    const azonosElemek = [...new Set(gepiszamok)].filter(szam => keziszamokint.includes(szam));
 
-    const azonosElemek = [...new Set(gepiszamok)].filter(szam => keziszamok.includes(szam));
-
-    const ujTartalom1 = ` ${gepiszamok.sort((a, b) => a - b)}`;
-    document.getElementById('vegeredmeny1').innerHTML += ujTartalom1;
-
-    const ujTartalom2 = ` ${keziszamok.sort((a, b) => a - b)}`;
-    document.getElementById('vegeredmeny2').innerHTML += ujTartalom2;
-
-    const ujTartalom3 = ` ${azonosElemek.sort((a, b) => a - b)}`;
-    document.getElementById('vegeredmeny3').innerHTML += ujTartalom3;
-
-    const ujTartalom4 = ` ${azonosElemek.length}`;
-    document.getElementById('vegeredmeny4').innerHTML += ujTartalom4;
+// Az eredmények megjelenítése
+document.getElementById('vegeredmeny1').textContent = `Gépi számok: ${gepiszamok.sort((a, b) => a - b)}`;
+document.getElementById('vegeredmeny2').textContent = `Kézi számok: ${keziszamokint.sort((a, b) => a - b)}`;
+document.getElementById('vegeredmeny3').textContent = `Azonos számok: ${azonosElemek.sort((a, b) => a - b)}`;
+document.getElementById('vegeredmeny4').textContent = `Találatok száma: ${azonosElemek.length}`;
 }
-
+//-----------------------------------------------------------------------
+// resetelés
 function reset() {
     const box1 = document.getElementById('vegeredmeny1');
     box1.textContent = 'Gépi számok:';
@@ -66,5 +133,7 @@ function reset() {
 
     const box4 = document.getElementById('vegeredmeny4');
     box4.textContent = 'Találatok száma:';
-}
 
+    const form = document.getElementById('form');
+    form.reset();
+}
