@@ -8,12 +8,13 @@
 
 /* Általános stílusok */
 body{
-    background-color: dimgray;
+    background-color: rgb(124, 255, 248);
     min-width: 400px;
     max-width: 600px;
     margin: 0 auto;
     font-family: 'Shadows Into Light Two', sans-serif;
     letter-spacing: 0.2rem;
+    user-select: none;
 }
 
 
