@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottó</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <label for="jatekTípus">Melyik játékot szeretnéd gyakorolni:</label>
+        <select id="jatekTípus" class="menu-select">            
+            <option class="menu-item" value="0">Válassz itt! </option>
+            <option class="menu-item" value="5">5-ös lottó</option>
+            <option class="menu-item" value="6">6-os lottó</option>
+            <option class="menu-item" value="7">7-es lottó</option>
+        </select>
+    </div>
+    
+    <div class="info">
+        <p class="info-p">A játék kezdéséhez először válaszd ki melyik lottót szeretnéd játszani, aztán nyomj rá a start gombra, majd add meg a számaidat. Ha meg akarod ismételni a játékot, nyomj rá at újra gombra.</p>
+        <p class="info-p">Az 5-ös lottóhoz válassz számot 1 és 90 között</p>
+        <p class="info-p">A 6-os lottóhoz válassz számot 1 és 45 között</p>
+        <p class="info-p">A 7-es lottóhoz válassz számot 1 és 35 között</p>
+        <p class="info-p warning"></p>
+    </div>
+
+    <div class="game-area"></div>
+
+    <div class="gomb-container">
+        <button
+            id="start" 
+            class="gomb gomb-start js-gomb-start"
+            onclick="jatekInditas()">
+                Játék Indítása
+        </button>
+        <button 
+            id="reset" 
+            class="gomb gomb-reset"
+            onclick="reset()">
+                Újra
+        </button>
+    </div>
+
+
+    <button 
+        id="ellenorzesGomb"
+        class="gomb gomb-eredmeny"
+        onclick="eredmeny()">
+            Eredmény
+    </button>
+
+    <div id="eredmenyek" class="osszegzes">
+        <p id="vegeredmeny1" class="osszegzes-menu">Gépi számok:</p>
+        <p id="vegeredmeny2" class="osszegzes-menu">Kézi számok:</p>
+        <p id="vegeredmeny3" class="osszegzes-menu">Azonos elemek:</p>
+        <p id="vegeredmeny4" class="osszegzes-menu">Találatok száma:</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

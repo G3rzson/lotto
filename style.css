@@ -1,0 +1,139 @@
+
+/* CSS reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Általános stílusok */
+body{
+    background-color: dimgray;
+    min-width: 400px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Shadows Into Light Two', sans-serif;
+    letter-spacing: 0.2rem;
+}
+
+
+/* Játék választás */
+.menu{
+    margin: 2rem;
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    text-align: center;
+}
+.menu-select{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    margin: 1rem;
+    font-weight: 900;
+    font-family: 'Shadows Into Light Two', sans-serif;
+    letter-spacing: 0.3rem;
+}
+
+/* Játék leírás */
+.info{
+    padding: 0 2rem;
+}
+.info-p{ 
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.2rem;
+}
+.warning{
+    color: rgb(255 142 142);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 2rem 0;
+    text-shadow: 0 0 1px  #ff00a5;
+    letter-spacing: 0.2rem;
+}
+
+/* Űrlap mezők */
+.game-area{
+    height: 100px;
+    margin: 0 2rem;
+}
+.input-numbers{
+    height: 100px;
+    margin: 1.5rem auto 0;
+}
+.form{
+    text-align: center;
+}
+.input-mezo{
+    width: 80px;
+    border: none;
+    padding: 0.3rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px black;
+}
+
+/* Gombok általános stílusa */
+.gomb-container{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.gomb{
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition-duration: 0.2s;
+    color: black;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    border: none;
+    font-family: 'Shadows Into Light Two', sans-serif;
+    letter-spacing: 0.2rem;
+}
+.gomb:active{
+    transform: scale(0.95);
+}
+
+/* Gombok egyedi stílusa */
+.gomb-start{
+    background-color: rgb(13, 124, 10); 
+}
+.gomb-start:hover{
+    text-shadow: 0 0 2px rgb(255, 255, 255);
+    background-color: rgb(16, 160, 11); 
+}
+.gomb-reset{
+    background-color: orange;
+}
+.gomb-reset:hover{
+    text-shadow: 0 0 2px rgb(255, 255, 255);
+    background-color: rgb(255, 186, 0);
+}
+.gomb-eredmeny{
+    display: block;
+    margin: -1rem auto 2rem;
+    border: none;
+    background-color: rgb(0, 119, 255);
+}
+.gomb-eredmeny:hover{
+    text-shadow: 0 0 2px rgb(255, 255, 255);
+    background-color: rgb(56, 149, 255);
+}
+
+/* Eredmény */
+.osszegzes{
+    font-size: 1.3rem;
+    margin: 0 2rem;
+}
+.osszegzes-menu{
+    padding: 0.5rem;
+    letter-spacing: 0.2rem;
+}
+
